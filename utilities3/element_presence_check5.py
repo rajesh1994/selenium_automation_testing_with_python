@@ -3,7 +3,7 @@ import os
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from handy_wrappers3 import HandyWrappers
+from utilities.handy_wrappers3 import HandyWrappers
 
 
 url = "https://courses.letskodeit.com/practice"

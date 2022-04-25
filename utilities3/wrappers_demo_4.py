@@ -1,5 +1,5 @@
 from selenium import webdriver
-from handy_wrappers3 import HandyWrappers
+from utilities.handy_wrappers3 import HandyWrappers
 import time
 import os
 
