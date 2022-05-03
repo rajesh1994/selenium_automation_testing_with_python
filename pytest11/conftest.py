@@ -1,24 +1,30 @@
 import pytest
 
-@pytest.fixture(scope="class")
-def oneTimeSetUp(browser, osType):
-    print("\n\nI will run once before every test class/module")
-    if browser == "firefox":
-        print("Running test on firefox")
-    else:
-        print("Running test on chrome")
-    yield
-    print("\n\nI will run once after every test class/module")
-
-
 @pytest.fixture()
 def setUp():
-    print("\nI will run once before every test function/method")
+    print("Running method level setUp")
     yield
-    print("\nI will run once after every test function/method")
+    print("Running method level tearDown")
+
+
+@pytest.fixture(scope="class")
+def oneTimeSetUp(request, browser):
+    print("Running one time setUp")
+    if browser == 'firefox':
+        value = 10
+        print("Running tests on FF")
+    else:
+        value = 20
+        print("Running tests on chrome")
+
+    if request.cls is not None:
+        request.cls.value = value
+
+    yield value
+    print("Running one time tearDown")
 
 def pytest_addoption(parser):
-    parser.addoption("--browser", help="Type of browser")
+    parser.addoption("--browser")
     parser.addoption("--osType", help="Type of operating system")
 
 @pytest.fixture(scope="session")
@@ -27,4 +33,4 @@ def browser(request):
 
 @pytest.fixture(scope="session")
 def osType(request):
-    return request.config.getoption("osType")
+    return request.config.getoption("--osType")

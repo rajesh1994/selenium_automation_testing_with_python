@@ -1,5 +1,5 @@
 import pytest
-from class_to_test7 import SomeClassToTest
+from selenium_automation_testing_with_python.pytest11.class_to_test8 import SomeClassToTest
 
 @pytest.mark.usefixtures("oneTimeSetUp", "setUp")
 class TestClassDemo():

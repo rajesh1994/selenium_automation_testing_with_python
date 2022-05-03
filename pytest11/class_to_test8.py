@@ -4,8 +4,6 @@ Learn about autouse keywords in fixtures
 Assert the result to create a real test scenario
 """
 
-from multiprocessing.sharedctypes import Value
-
 
 class SomeClassToTest():
     def __init__(self, value):
