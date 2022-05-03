@@ -1,5 +1,11 @@
-numbers = []
+import pytest
 
-for i in range(3):
-    input = int(input("Enter number: "))
-    numbers.append(input)
+@pytest.fixture()
+def setUp():
+    print("\n\nRunning demo1 setUp")
+
+def test_demo1_methodA(setUp):
+    print("Running demo1 method A")
+
+def test_demo1_methodB(setUp):
+    print("Running demo1 method B")

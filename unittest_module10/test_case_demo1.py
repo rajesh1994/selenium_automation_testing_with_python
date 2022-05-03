@@ -2,7 +2,7 @@ import unittest
 
 class TestCaseDemo1(unittest.TestCase):
     def setUp(self):
-        print("\n\nI will run once before every test function")
+        print("\n\nI will run once before every test function/method")
     
     def test_methodA(self):
         print("Test method A")
