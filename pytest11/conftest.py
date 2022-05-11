@@ -1,15 +1,8 @@
 import pytest
 
-@pytest.fixture()
-def setUp():
-    print("Running method level setUp")
-    yield
-    print("Running method level tearDown")
-
-
 @pytest.fixture(scope="class")
 def oneTimeSetUp(request, browser):
-    print("Running one time setUp")
+    print("\n\nI will run once before every test class")
     if browser == 'firefox':
         value = 10
         print("Running tests on FF")
@@ -21,7 +14,13 @@ def oneTimeSetUp(request, browser):
         request.cls.value = value
 
     yield value
-    print("Running one time tearDown")
+    print("\n\nI will run once after every test class")
+
+@pytest.fixture()
+def setUp():
+    print("\nI will run once before every test function/method")
+    yield
+    print("\nI will run once after every test function/method")
 
 def pytest_addoption(parser):
     parser.addoption("--browser")

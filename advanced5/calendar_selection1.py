@@ -39,6 +39,7 @@ class CalendarSelection():
         
         #Click the flights tab
         flights_tab = driver.find_element(By.XPATH, "//a[@class='uitk-tab-anchor']/span")
+        flights_tab = driver.find_element(By.PARTIAL_LINK_TEXT, "//a[@class='uitk-tab-anchor']/span")
         flights_tab.click()
         
         sleep(5)
